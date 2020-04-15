@@ -28,9 +28,10 @@
 #
 
 
-
+#import Tkinter
 import turtle
 import os
+
 
 #window enviornment
 wn = turtle.Screen()
@@ -62,7 +63,7 @@ def bat1_down():
     y -= 20
     bat1.sety(y)
 
-	# Bat 2
+# Bat 2
 bat2 = turtle.Turtle()
 bat2.speed(0)
 bat2.shape("square")
@@ -81,7 +82,7 @@ def bat2_down():
     y -= 20
     bat2.sety(y)
 
-	# Ball
+# Ball
 ball = turtle.Turtle()
 ball.speed(0)
 ball.shape("circle")
@@ -91,7 +92,7 @@ ball.goto(0, 0)
 ball.dx = 0.15
 ball.dy = 0.15
 
-	# Net
+# Net
 net = turtle.Turtle()
 net.speed(0)
 net.shape("square")
@@ -102,7 +103,7 @@ net.goto(0, 0)
 
 
 
-	#score_board
+#score_board
 score_board = turtle.Turtle()
 score_board.speed(0)
 score_board.shape("square")
@@ -120,6 +121,8 @@ wn.onkeypress(bat1_up, "w")
 wn.onkeypress(bat1_down, "s")
 wn.onkeypress(bat2_up, "Up")
 wn.onkeypress(bat2_down, "Down")
+wn.onkeypress(turtle.bye, "Escape")
+
 
 # Main game loop
 while True:
