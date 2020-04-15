@@ -2,6 +2,7 @@
 Basic Python Games with basic python code
 
 Things to do 
+
 1)Add the provided bounce.wav to add the sound effect otherwise it will give you an error .
 
 2)For operating systems other than Linux
