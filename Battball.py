@@ -71,6 +71,7 @@ def  player_b_win():
 
 # To show winner	
 def win(winner):
+	turtle.resetscreen()
 	pop = turtle.Turtle()
 	pop.speed(0)
 	pop.shape("square")
@@ -78,7 +79,7 @@ def win(winner):
 	pop.penup()
 	pop.hideturtle()
 	pop.goto(0, 0)
-	pop.write("Player "+winner+" won ", align="center", font=("Courier", 24, "normal"))
+	pop.write("Player {} won ".format(winner), align="center", font=("Courier", 24, "normal"))
 	pop.goto(0, -50)
 	pop.write("Press Esc to exit R to reset ", align="center", font=("Courier", 24, "normal"))
 		
@@ -168,12 +169,6 @@ wn.onkeypress(bat2_up, "Up")
 wn.onkeypress(bat2_down, "Down")
 wn.onkeypress(turtle.bye, "Escape")
 wn.onkeypress(game_reload, "r")
-
-
-
-	
-
-
 
 
 
