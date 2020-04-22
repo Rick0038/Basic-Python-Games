@@ -27,10 +27,70 @@
 #
 #
 
-
-#import Tkinter
+		####----- Import Lib -----####
+    
+		
 import turtle
 import os
+
+
+
+		####----- Functions -----####
+    
+		
+# To moove bat 1
+def bat1_up():
+    y = bat1.ycor()
+    y += 20
+    bat1.sety(y)
+
+def bat1_down():
+    y = bat1.ycor()
+    y -= 20
+    bat1.sety(y)
+
+# To moove bat 2
+def bat2_up():
+    y = bat2.ycor()
+    y += 20
+    bat2.sety(y)
+
+def bat2_down():
+    y = bat2.ycor()
+    y -= 20
+    bat2.sety(y)
+    
+# Win Condition For players
+def  player_a_win():
+	winner = 'A'
+	win(winner)
+
+def  player_b_win():
+	 winner = 'B'
+	 win(winner)
+
+# To show winner	
+def win(winner):
+	pop = turtle.Turtle()
+	pop.speed(0)
+	pop.shape("square")
+	pop.color("white")
+	pop.penup()
+	pop.hideturtle()
+	pop.goto(0, 0)
+	pop.write("Player "+winner+" won ", align="center", font=("Courier", 24, "normal"))
+	pop.goto(0, -50)
+	pop.write("Press Esc to exit R to reset ", align="center", font=("Courier", 24, "normal"))
+		
+# To restart the geme
+def game_reload():
+	python = sys.executable
+	os.execl(python, python, * sys.argv)
+
+
+
+
+		####----- Game Objects -----####
 
 
 #window enviornment
@@ -53,15 +113,6 @@ bat1.shapesize(stretch_wid=5,stretch_len=1)
 bat1.penup()
 bat1.goto(-350, 0)
 
-def bat1_up():
-    y = bat1.ycor()
-    y += 20
-    bat1.sety(y)
-
-def bat1_down():
-    y = bat1.ycor()
-    y -= 20
-    bat1.sety(y)
 
 # Bat 2
 bat2 = turtle.Turtle()
@@ -72,15 +123,7 @@ bat2.shapesize(stretch_wid=5,stretch_len=1)
 bat2.penup()
 bat2.goto(350, 0)
 
-def bat2_up():
-    y = bat2.ycor()
-    y += 20
-    bat2.sety(y)
 
-def bat2_down():
-    y = bat2.ycor()
-    y -= 20
-    bat2.sety(y)
 
 # Ball
 ball = turtle.Turtle()
@@ -115,16 +158,27 @@ score_board.write("Player A: 0  Player B: 0", align="center", font=("Courier", 2
 
 
 
-# Keyboard bindings
+		####----- Key Bindings -----####
+    
+	
 wn.listen()
 wn.onkeypress(bat1_up, "w")
 wn.onkeypress(bat1_down, "s")
 wn.onkeypress(bat2_up, "Up")
 wn.onkeypress(bat2_down, "Down")
 wn.onkeypress(turtle.bye, "Escape")
+wn.onkeypress(game_reload, "r")
 
 
-# Main game loop
+
+	
+
+
+
+
+
+		####-----Main Game Loop-----####
+		
 while True:
     wn.update()
     
@@ -172,3 +226,10 @@ while True:
         ball.dx *= -1
         os.system("aplay bounce.wav&")
         ball.color("green")
+        
+    # Game End 
+    if score_a >= 1: 
+        player_a_win()
+        
+    elif score_b >=1:
+        player_b_win()
